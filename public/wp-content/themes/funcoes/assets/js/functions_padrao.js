@@ -1,3 +1,5 @@
+
+
 // Script de login do usuário 
 
 /*
@@ -7,39 +9,39 @@
 *
 */
 
+
 $(document).ready(function(){
 var base_url = window.location.href;
-	/*
-	$("[name=entrar-submit]").on("click",function(){
-		var objs ={cpf:$("#cpf").val(),senha:$("#password").val()};
-	
-		if(!validation_form(objs){
-			console.log(this);
-		}
 
-	    $.ajax({
-		    url: base_url+"Login" ,
-		    type:'post',
-		    data:$("#login-form").serialize(),
-		    success: function(data){
-		    	//console.log(data);
-		    }
-	    });
 
-	});*/
+
+$(document).ready(function(){
+    $("[name=cnpj]").mask("999.999.999-99");
+    $('[name=data]').mask('00/00/0000');
+    $('[name=cep]').mask('00000-000');
+    $('[name=telefone]').mask('(00)0000-0000');
+    $("#nr_telefone").mask("(00)0000-0000");
+    $.ajax({
+    url:'../wp-content/themes/illdy/functions_padrao.php',
+    type:'POST',
+    data: 'action=uf',
+    success: function(data){
+            var estados = JSON.parse(data);
+            var j = 0; 
+            $("[name=estado]").html("");
+            $(estados).each(function(){
+              $("[name=estado]").append("<option value='" + estados[j].uf + "'>"+ estados[j].uf +"</option>");
+              j++;
+            })
+        }});
+});
+
+
 })
-
-function validation_form(campos=""){
-	
-		console.log(campos);
-	}
-
-
-
 
 //JavaScript Home_Page
 $(function(){
-    $('[data-toggle="tooltip"]').tooltip();
+    //$('[data-toggle="tooltip"]').tooltip();
     $(".side-nav .collapse").on("hide.bs.collapse", function() {                   
         $(this).prev().find(".fa").eq(1).removeClass("fa-angle-right").addClass("fa-angle-down");
     });
@@ -47,4 +49,6 @@ $(function(){
         $(this).prev().find(".fa").eq(1).removeClass("fa-angle-down").addClass("fa-angle-right");        
     });
 })    
+
     
+

@@ -33,9 +33,6 @@ $(document).ready(function(){
     $('[name=data]').mask('00/00/0000');
     $('[name=cep]').mask('00000-000');
     $('[name=telefone]').mask('(00)0000-0000');
-
-
-
     $.ajax({
     url:window.location.origin + "/TCC/administrador/Common_Controller/getUf",
     type:'POST',

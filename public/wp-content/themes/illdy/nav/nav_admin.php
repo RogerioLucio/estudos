@@ -22,7 +22,7 @@
                         </a>
                     </li>            
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin User <b class="fa fa-angle-down"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administrador <b class="fa fa-angle-down"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="#"><i class="fa fa-fw fa-user"></i> Edit Profile</a></li>
                             <li><a href="#"><i class="fa fa-fw fa-cog"></i> Change Password</a></li>
@@ -34,24 +34,26 @@
                 <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
-                       
-                    
                         <li>
-                            <a href="investigaciones/favoritas"><i class="fa fa-fw fa-user-plus"></i>  CADASTRAR VAGAS</a>
+                            <a href="#" data-toggle="collapse" data-target="#submenu-1"><i class="fa fa-fw fa-user-plus"></i>   VAGAS DE EMPREGO<i class="fa fa-fw fa-angle-down pull-right"></i></a>
+                            <ul id="submenu-1" class="collapse">
+                                <li><a href="../cadastrar-vagas"><i class="fa fa-angle-double-right"></i> Cadastrar Vagas</a></li>
+                                <li><a href="../vagas-cadastradas"><i class="fa fa-angle-double-right"></i> Vagas Cadastradas</a></li>
+                            </ul>
                         </li>
                         <li>
-                            <a href="sugerencias"><i class="fa fa-fw fa-paper-plane-o"></i> CADASTRAR CURSOS</a>
+                            <a href="#" data-toggle="collapse" data-target="#submenu-2"><i class="fa fa-fw fa-user-plus"></i>   CURSOS<i class="fa fa-fw fa-angle-down pull-right"></i></a>
+                            <ul id="submenu-2" class="collapse">
+                                <li><a href="../cadastrar-cursos"><i class="fa fa-angle-double-right"></i> CADASTRAR CURSOS</a></li>
+                                <li><a href="../cursos-cadastrados"><i class="fa fa-angle-double-right"></i> CURSOS CADASTRADOS</a></li>
+                            </ul>
                         </li>
-                    
-                       
                         <li>
                             <a href="#" data-toggle="collapse" data-target="#submenu-6"><i class="fa fa-cog"></i>   CONFIGURAÇÕES <i class="fa fa-fw fa-angle-down pull-right"></i></a>
                             <ul id="submenu-6" class="collapse">
                                 <li><a href="#"><i class="fa fa-angle-double-right"></i> Atualizar Cadastro</a></li>
                             </ul>
                         </li>
-                       
-
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->

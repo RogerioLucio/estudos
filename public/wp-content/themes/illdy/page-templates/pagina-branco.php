@@ -20,14 +20,12 @@
           <div class="panel-body">
             <div class="row">
               <div class="col-lg-12">
-         
-                <form id="login-form" action="Acessar" method="post" role="form" style="display: block;">
-          
+                <form id="login-form" action="../wp-content/themes/illdy/page-templates/Acessar.php" method="post" role="form" style="display: block;">
+                  <div name="mensagem" style="display:none" class="alert alert-danger"></div>
            
-                  <h2>LOGIN</h2>
+                  <h2>LOGIN</h2>  
                     <div class="form-group">
                       <input type="text" name="cnpj" id="cnpj" tabindex="1" value="" class="form-control" placeholder="CNPJ" value="">
-
                     </div>
                     <div class="form-group">
                       <input type="password" name="password" id="password" value=""  tabindex="2" class="form-control" placeholder="Senha">
@@ -84,15 +82,16 @@
 <footer>
     <div class="container">
         <div class="col-md-10 col-md-offset-1 text-center">
-            <h6 style="font-size:14px;font-weight:100;color: #fff;">Desenvolvido por  by <a href="http://hashif.com" style="color: #fff;" target="_blank">TESE</a></h6>
+            <h6 style="font-size:14px;font-weight:100;color: #fff;">Desenvolvido por <a href="../sobre-nos" style="color: #fff;" target="_blank">GRUPO</a></h6>
         </div>   
     </div>
 </footer>
 <script type="text/javascript">
   $(function() {
-    var base_url = window.location.href;
-    $('#login-form-link').click(function(e) {
-      $("#login-form").delay(100).fadeIn(100);
+
+  var base_url = window.location.href;
+  $('#login-form-link').click(function(e){
+    $("#login-form").delay(100).fadeIn(100);
     $("#register-form").fadeOut(100);
     $('#register-form-link').removeClass('active');
     $(this).addClass('active');
@@ -107,18 +106,29 @@
   });
 
   $('[name=cnpj]').mask('00.000.000/0000-00', {reverse: true});
-  /*
   $("[name=entrar-submit]").on("click",function(){
-    $.ajax({
-      url:base_url+'Acessar',
-      type: 'POST',
-      data:$("#login-form").serialize(),
-      success: function(data){
-        console.log(data);
+    event.preventDefault();
+    $("[name=mensagem]").hide();
+      if($("[name=cnpj").val().trim() == ''){
+        $("[name=mensagem]").show();
+        $("[name=mensagem]").html("Digite um CNPJ");
+        return;
+      }else if($("[name=cnpj").val().length < 18){
+        $("[name=mensagem]").show();
+        $("[name=mensagem]").html("CNPJ inválido");
+        return;
 
-      }
-    });
-  });*/
+      }else if($("[name=password").val().trim() == ''){
+        $("[name=mensagem]").show();
+        $("[name=mensagem]").html("Digite sua  senha");
+      }else if($("[name=password").val().length < 6){
+        $("[name=mensagem]").show();
+         $("[name=mensagem]").html("Senha com menos de 6 digitos");
+      }else{
+        $("[name=mensagem]").hide();
+          $("#login-form").submit();
+      } 
+  });
 
 });
 
