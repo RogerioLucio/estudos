@@ -73,7 +73,6 @@ class Acessos_Controller extends CI_Controller {
 		$this->load->model("Acessos_Model");
 		$id_pagina = $_GET['id'];
 		//$resultado = $this->Acessos_Model->verifica_acesso($id_pagina);
-		
 		$status_retorno = $this->Acessos_Model->Acessos_pagina($id_pagina);
 		if($status_retorno != '0' ){
 				$this->load->view('common/header');

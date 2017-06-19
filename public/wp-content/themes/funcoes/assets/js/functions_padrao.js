@@ -16,7 +16,7 @@ var base_url = window.location.href;
 
 
 $(document).ready(function(){
-    $("[name=cnpj]").mask("999.999.999-99");
+    $('[name=cnpj]').mask('00.000.000/0000-00', {reverse: true});
     $('[name=data]').mask('00/00/0000');
     $('[name=cep]').mask('00000-000');
     $('[name=telefone]').mask('(00)0000-0000');

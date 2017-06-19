@@ -1,4 +1,5 @@
 <?php
+
 /*
 * @author Rogerio Lucio <rogerioluciodasilva@hotmail.com>
 * @author Cristiane <>
@@ -7,7 +8,7 @@
 */
 class Acessos_Model {
 	
-	public function Verifica_login($values){
+	public function Verifica_login_wp($values){
 		/*
 		*	Tipos de retorno
 		*   0 - Usuário Existente e senha correta
@@ -30,7 +31,14 @@ class Acessos_Model {
 			}	
 		$acessos = new Acessos_Model();
 		$user = new Usuario_Model();
+
 		if(trim($usuario[0]->password) == trim(md5($values["password"]))){
+			session_start();
+			$_SESSION['usuario_id'] = $usuario[0]->id_user; 
+			$_SESSION['usuario_email'] = $usuario[0]->email; 
+			$_SESSION['usuario_doc'] = $usuario[0]->cpf; 
+			$_SESSION['usuario_login'] = $usuario[0]->id_login; 
+			$user->setIduser($usuario[0]->id_user);	
 			$user->setIdLogin($usuario[0]->id_login);	
 			$user->setEmail($usuario[0]->email);	
 			$user->setCPF($usuario[0]->cpf);

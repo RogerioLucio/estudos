@@ -36,10 +36,16 @@ class Acessos_Model extends CI_Model{
 				$usuario[$key] = $value;				
 			}	
 			if($usuario[0]->password == md5($this->input->post("password"))){
+				$this->load->library("session");
+				$_SESSION['usuario_id'] = $usuario[0]->id_user; 
+				$_SESSION['usuario_email'] = $usuario[0]->email; 
+				$_SESSION['usuario_doc'] = $usuario[0]->cpf; 
+				$_SESSION['usuario_login'] = $usuario[0]->id_login;
 				$this->usuario->setIdLogin($usuario[0]->id_login);	
 				$this->usuario->setEmail($usuario[0]->email);	
 				$this->usuario->setCPF($usuario[0]->cpf);
 				$this->Obter_Chaves($usuario[0]->id_login);
+
 				return 0;
 				exit;
 			}else{

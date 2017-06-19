@@ -15,8 +15,7 @@
 	}
 		if(isset($_POST) || !empty($_POST)){
 			$acessos = new Acessos_Model();
-			$retorno = $acessos->Verifica_login($_POST);
-
+			$retorno = $acessos->Verifica_login_wp($_POST);		
 
 			switch ($retorno) {
 				case '0':

@@ -42,6 +42,13 @@ class Usuario_Model {
     public function setIdLogin($id_login= ''){
         $this->id_login = $id_login;
     }
+    
+    public function setIdUser($id_user= ''){
+        $this->id_user = $id_user;
+    }
+    public function getUser($id_user= ''){
+        return $id_user;
+    }
 
     // Acessadores - Usuario E-mail
     public function getEmail(){

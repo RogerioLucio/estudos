@@ -58,8 +58,12 @@
                                 <li><a href="#"><i class="fa fa-angle-double-right"></i> SUBMENU 2.3</a></li>
                             </ul>
                         </li>
-                        <li>
-                            <a href="investigaciones/favoritas"><i class="fa fa-fw fa-user-plus"></i>  MENU 3</a>
+                         <li>
+                            <a href="#" data-toggle="collapse" data-target="#submenu-4"><i class="fa fa-fw fa-star"></i>  CURSOS <i class="fa fa-fw fa-angle-down pull-right"></i></a>
+                            <ul id="submenu-4" class="collapse">
+                                <li><a href="<?php echo base_url('Cursos_Controller/')?>"><i class="fa fa-angle-double-right"></i> Cadastrar cursos</a></li>
+                                <li><a href="<?php echo base_url('Cursos_Controller/Cursos_Cadastrados')?>"><i class="fa fa-angle-double-right"></i> Cursos Cadastrados</a></li>
+                            </ul>
                         </li>
                         <li>
                             <a href="sugerencias"><i class="fa fa-fw fa-paper-plane-o"></i> MENU 4</a>

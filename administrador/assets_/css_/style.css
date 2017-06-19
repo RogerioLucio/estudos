@@ -2,13 +2,10 @@
 @media(min-width:768px) {
     body {
         margin-top: 50px;
-        font-family: 'Nunito', sans-serif !important;
     }
     /*html, body, #wrapper, #page-wrapper {height: 100%; overflow: hidden;}*/
 }
-    .nav{
-        font-family: 'Nunito', sans-serif !important;
-    }
+
 #wrapper {
     padding-left: 0;    
 }
@@ -144,19 +141,6 @@
 .navbar-brand {
     padding: 5px 15px;
 }
-
-.modal-header-primary {
-    color: #fff;
-    padding: 9px 15px;
-    border-bottom: 1px solid #eee;
-    background-color: #428bca;
-    -webkit-border-top-left-radius: 5px;
-    -webkit-border-top-right-radius: 5px;
-    -moz-border-radius-topleft: 5px;
-    -moz-border-radius-topright: 5px;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-}
-.row{
-    font-family: 'Nunito', sans-serif !important; 
+.campo_obg{
+    color:  red;
 }

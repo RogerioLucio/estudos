@@ -6,7 +6,9 @@
     }
     /*html, body, #wrapper, #page-wrapper {height: 100%; overflow: hidden;}*/
 }
-
+    .nav{
+        font-family: 'Nunito', sans-serif !important;
+    }
 #wrapper {
     padding-left: 0;    
 }

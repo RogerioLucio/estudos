@@ -105,7 +105,7 @@
     e.preventDefault();
   });
 
-  $('[name=cnpj]').mask('00.000.000/0000-00', {reverse: true});
+  
   $("[name=entrar-submit]").on("click",function(){
     event.preventDefault();
     $("[name=mensagem]").hide();

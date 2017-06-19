@@ -10,9 +10,9 @@
 
 
 function validation_form(campos=""){
-    
-        console.log(campos);
-    }
+	
+		console.log(campos);
+	}
 
 
 
@@ -33,7 +33,6 @@ $(document).ready(function(){
     $('[name=data]').mask('00/00/0000');
     $('[name=cep]').mask('00000-000');
     $('[name=telefone]').mask('(00)0000-0000');
-    $('[name=nrtelefone]').mask('(00)0000-0000');
     $.ajax({
     url:window.location.origin + "/TCC/administrador/Common_Controller/getUf",
     type:'POST',
@@ -41,10 +40,8 @@ $(document).ready(function(){
             var estados = JSON.parse(data2);
             var j = 0; 
             $("[name=estado]").html("");
-            $("[name=sg_uf]").html("");
             $(estados).each(function(){
               $("[name=estado]").append("<option value='" + estados[j].uf + "'>"+ estados[j].uf +"</option>");
-              $("[name=sg_uf]").append("<option value='" + estados[j].uf + "'>"+ estados[j].uf +"</option>");
               j++;
             })
         }});

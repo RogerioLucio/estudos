@@ -1,21 +1,4 @@
 
-<?php
-/**
- * Template Name: page-cursos-cadastrados
- *
- * @package WordPress
- * @subpackage Twenty_Fourteen
- * @since Twenty Fourteen 1.0
- */
-include "wp-content/themes/illdy/common_header.php";
-include "wp-content/themes/illdy/nav/nav_admin.php";
-include "wp-content/themes/illdy/ajax/cursos.php";
-
-
-global $wpdb;
-	$resultado = carrega_grid('cursos' , $filtros);
-
-?>
 
 <div class="container">
 	<div class="pagina" style="border-radius: 10px; padding-top: 20px;">  
@@ -50,7 +33,7 @@ global $wpdb;
 		              <?php 
 		                  echo "<tbody id='table_page'>";
 		                  $count = 0;
-		                foreach ($resultado as $cursos) {
+		                foreach ($cursos as $cursos) {
 		                 echo "<tr>";
 		                  echo "<td style='padding-right:10px'>" . $cursos->nm_curso . "</td>";
 		                  echo "<td>" . $cursos->nm_empresa . "</td>";
@@ -205,20 +188,21 @@ global $wpdb;
 
 var id_curso;
 	$("#filtro_pesquisar").on("click",function(){
-		var data = {'action': 'filtrar',
+		var data = {
 					'curso': $("#js_curso").val(),
 					'empresa': $("#js_empresa").val(),
 					'cidade': $("#js_cidade").val(),
 					'estado': $("#js_estado").val(),
 					'hora': $("#js_hora").val()};
 		$.ajax({
-			url:'<?php echo get_template_directory_uri() ?>/ajax/cursos.php',
+			url:'<?php echo base_url('Cursos_Controller/Filtrar')?>',
 			data: data,
 			type:'POST',
 			beforeSend: function() {
        			//$(placeholder).addClass('loading');
     		},
 			success: function(data){
+				console.log(data);
 			var response = JSON.parse(data);
 			var j = 0;
 			$("#table_page").html("");
@@ -259,7 +243,7 @@ var id_curso;
 			object['action'] ='editar';
 			object['id_curso'] = id_curso;
 			$.ajax({
-				url:'<?php echo get_template_directory_uri() ?>/ajax/cursos.php',
+				url:'<?php echo base_url('Cursos_Controller/Atualizar')?>',
 				data: object ,
 				type: 'POST',
 				beforeSend: function(){
@@ -291,7 +275,7 @@ var id_curso;
 			$('#gridSystemModal input,textarea').prop("disabled", true);
 			$('#gridSystemModal').modal('toggle');
 			$.ajax({
-				url:'<?php echo get_template_directory_uri() ?>/ajax/cursos.php',
+				url:'<?php echo base_url('Cursos_Controller/Visualizar')?>',
 				data: 'action=visualizar&id_curso='+$(this).data("categoria"),
 				type:'POST' ,
 				success: function(data){
@@ -315,3 +299,4 @@ var id_curso;
 
 $("#nr_telefone").mask("(00)0000-0000");
 </script>
+

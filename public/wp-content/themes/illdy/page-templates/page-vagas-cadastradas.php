@@ -1,7 +1,6 @@
-
 <?php
 /**
- * Template Name: page-cursos-cadastrados
+ * Template Name: Pagina vagas cadastradas
  *
  * @package WordPress
  * @subpackage Twenty_Fourteen
@@ -10,19 +9,15 @@
 include "wp-content/themes/illdy/common_header.php";
 include "wp-content/themes/illdy/nav/nav_admin.php";
 include "wp-content/themes/illdy/ajax/cursos.php";
-
-
 global $wpdb;
-	$resultado = carrega_grid('cursos' , $filtros);
-
+	$resultado = carrega_grid('vagas' , $filtros);
 ?>
-
 <div class="container">
 	<div class="pagina" style="border-radius: 10px; padding-top: 20px;">  
 	    <div class="div_cadastro" style="    padding: 20px;">  
 		    <div class="row"> 
 		       <div class="col-md-12">
-		        	<h2 class="sub-header">Cursos </h2>
+		        	<h2 class="sub-header">Vagas </h2>
 		        	<hr>
 		        </div>
       		</div>
@@ -39,7 +34,7 @@ global $wpdb;
 		            <table class="table table-striped">
 		              <thead>
 		                <tr>
-		                  <th align="center" width="20%;">Curso</th>
+		                  <th align="center" width="20%;">Título da Vaga</th>
 		                  <th align="center" width="20%;">Empresa</th>
 		                  <th align="center" width="10%;">Carga Horaria</th>
 		                  <th align="center" width="10%;">Vagas</th>
@@ -50,14 +45,14 @@ global $wpdb;
 		              <?php 
 		                  echo "<tbody id='table_page'>";
 		                  $count = 0;
-		                foreach ($resultado as $cursos) {
+		                foreach ($resultado as $vagass) {
 		                 echo "<tr>";
-		                  echo "<td style='padding-right:10px'>" . $cursos->nm_curso . "</td>";
-		                  echo "<td>" . $cursos->nm_empresa . "</td>";
-		                  echo "<td>" . $cursos->qt_carga_horaria . "</td>";
-		                  echo "<td>" . $cursos->qt_vagas . "</td>";
-		                  echo "<td>" . $cursos->nm_cidade . "</td>";
-		                  echo "<td align='center'> <span name='opc' id='visualizar'  data-target='#gridSystemModal'  data-categoria='$cursos->id_curso' id=". $cursos->id_curso  . " ><i class='fa fa-cog' aria-hidden='true'></i></span></td>";
+		                  echo "<td style='padding-right:10px'>" . $vagass->nm_vagas . "</td>";
+		                  echo "<td>" . $vagass->nm_empresa . "</td>";
+		                  echo "<td>" . $vagass->qt_carga_horaria . "</td>";
+		                  echo "<td>" . $vagass->qt_vagas . "</td>";
+		                  echo "<td>" . $vagass->nm_cidade . "</td>";
+		                  echo "<td align='center'> <span name='opc' id='visualizar'  data-target='#gridSystemModal'  data-categoria='$vagass->id_vagas' id=". $vagass->id_vagas  . " ><i class='fa fa-cog' aria-hidden='true'></i></span></td>";
 		                  echo "<tr>";
 		                  $count++;
 		                }
@@ -76,17 +71,17 @@ global $wpdb;
     <div class="modal-content">
       <div class="modal-header modal-header-primary">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h2 class="modal-title" id="gridSystemModalLabel">Atualizar Curso</h2>
+        <h2 class="modal-title" id="gridSystemModalLabel">Atualizar vagas</h2>
       </div>
       <form role="form" data-toggle="validator">
       <div  class="modal-body atualiza">	
-		  <h1>Curso</h1>
-		  <p>Edite informações sobre seu curso:</p>  
+		  <h1>vagas</h1>
+		  <p>Edite informações sobre seu vagas:</p>  
 		  <hr>          
 		  <div class="row">
 		  		<div class="col-md-4">
-		  			 <span>Curso</span>
-		  			<input id="nm_curso" class="form-control"required>
+		  			 <span>vagas</span>
+		  			<input id="nm_vagas" class="form-control"required>
 		  		</div>
 		  		<div class="col-md-4">
 		  			 <span>Empresa</span>
@@ -137,8 +132,8 @@ global $wpdb;
 		  <br>
 		  <div class="row">
 			  <div class="col-md-12">
-			  <span >Descrição do Curso</span>
-			  	<textarea id="ds_curso" rows="4" class="form-control"></textarea>
+			  <span >Descrição do vagas</span>
+			  	<textarea id="ds_vagas" rows="4" class="form-control"></textarea>
 			  </div>
 		  </div>
       </div><!-- Modal Body -->
@@ -159,13 +154,13 @@ global $wpdb;
     <div class="modal-content">
       <div class="modal-header modal-header-primary">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h2 class="modal-title" id="gridSystemModalLabel">Filtrar Curso</h2>
+        <h2 class="modal-title" id="gridSystemModalLabel">Filtrar vagas</h2>
       </div>
       <div class="modal-body">	
 		<div class="row">	
 			<div class="col-md-6">	
-					<label>Buscar por Curso</label>
-					<input type="text" id="js_curso" class="form-control" placeholder="Digite o nome do Curso" name="">
+					<label>Buscar por vagas</label>
+					<input type="text" id="js_vagas" class="form-control" placeholder="Digite o nome do vagas" name="">
 			</div>
 			<div class="col-md-6">	
 					<label>Buscar por Empresa</label>
@@ -202,17 +197,15 @@ global $wpdb;
 </div><!-- /.modal -->	
 
 <script type="text/javascript">
-
-var id_curso;
 	$("#filtro_pesquisar").on("click",function(){
 		var data = {'action': 'filtrar',
-					'curso': $("#js_curso").val(),
+					'vagas': $("#js_vagas").val(),
 					'empresa': $("#js_empresa").val(),
 					'cidade': $("#js_cidade").val(),
 					'estado': $("#js_estado").val(),
 					'hora': $("#js_hora").val()};
 		$.ajax({
-			url:'<?php echo get_template_directory_uri() ?>/ajax/cursos.php',
+			url:'<?php echo get_template_directory_uri() ?>/ajax/vagass.php',
 			data: data,
 			type:'POST',
 			beforeSend: function() {
@@ -225,17 +218,17 @@ var id_curso;
 				$(response).each(function(){
 					$("#table_page").append(
 						"<tr>"+
-						"<td>" + response[j]['nm_curso'] + "</td>" +
+						"<td>" + response[j]['nm_vagas'] + "</td>" +
 						"<td>" + response[j]['nm_empresa'] + "</td>" +
 						"<td>" + response[j]['qt_carga_horaria'] + "</td>" +
 						"<td>" + response[j]['qt_vagas'] + "</td>" +
 						"<td>" + response[j]['nm_cidade'] + "</td>" +
-						"<td align='center'> <span name='opc'   data-categoria=" + response[j]['id_curso'] +" id="+ response[j]['id_curso']  + " ><i class='fa fa-cog' aria-hidden='true'></i></span></td>" + 
+						"<td align='center'> <span name='opc'   data-categoria=" + response[j]['id_vagas'] +" id="+ response[j]['id_vagas']  + " ><i class='fa fa-cog' aria-hidden='true'></i></span></td>" + 
 						"<tr>");
 					j++;
 				});
 				$('#filtros').modal('hide');
-			$("#js_curso").val("");
+			$("#js_vagas").val("");
 			$("#js_empresa").val("");
 			$("#js_cidade").val("");
 			$("#js_estado").val("");
@@ -257,9 +250,9 @@ var id_curso;
 				object[val.id] = $(".modal-body input, textarea").eq(index).val();
 			})
 			object['action'] ='editar';
-			object['id_curso'] = id_curso;
+			object['id_vagas'] = $('#salvar').data("id");
 			$.ajax({
-				url:'<?php echo get_template_directory_uri() ?>/ajax/cursos.php',
+				url:'<?php echo get_template_directory_uri() ?>/ajax/vagass.php',
 				data: object ,
 				type: 'POST',
 				beforeSend: function(){
@@ -270,14 +263,14 @@ var id_curso;
 			 			BootstrapDialog.show({
 			 				type: BootstrapDialog.TYPE_SUCCESS,
 				            title: 'Sucesso!',
-				            message: 'Seu curso foi Atualizado!'
+				            message: 'Seu vagas foi Atualizado!'
 			        	});
-			        	$('#cadastro_curso').trigger("reset");
+			        	$('#cadastro_vagas').trigger("reset");
 			 		}else{
 			 			BootstrapDialog.show({
 			 				type: BootstrapDialog.TYPE_DANGER,
 				            title: 'Erro',
-				            message: 'Curso não Atualizado, verifique os campos ou entre em contato com o suporte!'
+				            message: 'vagas não Atualizado, verifique os campos ou entre em contato com o suporte!'
 			        	});
 			 		}
 			 	$("#filtro_pesquisar").trigger('click');
@@ -286,17 +279,16 @@ var id_curso;
 			});
 		});	
 		$(document).on('click', '[name=opc]', function(){
-			 id_curso = $(this).data('categoria');
 			$('#gridSystemModal input,textarea').val('');
 			$('#gridSystemModal input,textarea').prop("disabled", true);
 			$('#gridSystemModal').modal('toggle');
 			$.ajax({
-				url:'<?php echo get_template_directory_uri() ?>/ajax/cursos.php',
-				data: 'action=visualizar&id_curso='+$(this).data("categoria"),
+				url:'<?php echo get_template_directory_uri() ?>/ajax/vagass.php',
+				data: 'action=visualizar&id_vagas='+$(this).data("categoria"),
 				type:'POST' ,
 				success: function(data){
 						var response = JSON.parse(data);
-						$("#nm_curso").val(response[0]['nm_curso']).prop( "disabled", true);
+						$("#nm_vagas").val(response[0]['nm_vagas']).prop( "disabled", true);
 						$("#nm_empresa").val(response[0]['nm_empresa']).prop( "disabled", true);
 						$("#qt_vagas").val(response[0]['qt_vagas']).prop( "disabled", true);
 						$("#qt_carga_horaria").val(response[0]['qt_carga_horaria']).prop( "disabled", true);
@@ -306,8 +298,8 @@ var id_curso;
 						$("#nr_telefone").val(response[0]['nr_telefone']).prop( "disabled", true);
 						$("#nm_requisito").val(response[0]['nm_requisito']).prop( "disabled", true);
 						$("#nm_escolaridade").val(response[0]['nm_escolaridade']).prop( "disabled", true);
-						$("#ds_curso").val(response[0]['ds_curso']).prop( "disabled", true);
-						$('#salvar').attr("data-id",response[0]['id_curso']).prop( "disabled", true);
+						$("#ds_vagas").val(response[0]['ds_vagas']).prop( "disabled", true);
+						$('#salvar').attr("data-id",response[0]['id_vagas']).prop( "disabled", true);
 				}
 			});
 		});

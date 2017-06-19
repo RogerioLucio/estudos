@@ -1,4 +1,6 @@
-
+<?php
+session_start();
+?>  
         <div id="throbber" style="display:none; min-height:120px;"></div>
         <div id="noty-holder"></div>
         <div id="wrapper">
@@ -12,7 +14,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="http://cijulenlinea.ucr.ac.cr/dev-users/">
+                    <a class="navbar-brand" href="../home-admin">
                         <img src="http://placehold.it/200x50&text=LOGO" alt="LOGO"">
                     </a>
                 </div>

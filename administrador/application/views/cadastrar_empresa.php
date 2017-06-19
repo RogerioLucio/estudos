@@ -4,6 +4,7 @@
 
   <body style="">
 
+<div class="container">
 
     <div class="pagina" style="border-radius: 10px; padding-top: 20px;">          
         <div class="div_cadastro" style="    padding: 20px;">
